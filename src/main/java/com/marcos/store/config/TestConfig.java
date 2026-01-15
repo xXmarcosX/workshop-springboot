@@ -1,8 +1,10 @@
 package com.marcos.store.config;
 
+import com.marcos.store.models.Category;
 import com.marcos.store.models.Order;
 import com.marcos.store.models.User;
 import com.marcos.store.models.enums.OrderStatus;
+import com.marcos.store.repositories.CategoryRepository;
 import com.marcos.store.repositories.OrderRepository;
 import com.marcos.store.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,17 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private CategoryRepository categoryRepository;
+
     @Override
     public void run(String... args) throws Exception {
+        Category c1 = new Category(null, "Eletronics");
+        Category c2 = new Category(null, "Books");
+        Category c3 = new Category(null, "Computers");
+
+        categoryRepository.saveAll(Arrays.asList(c1, c2, c3));
+
         User user1 = new User(null, "Maria", "maria@gmail.com", "11111111", "123456");
         User user2 = new User(null, "Mario", "mario@gmail.com", "22222222", "456789");
 
