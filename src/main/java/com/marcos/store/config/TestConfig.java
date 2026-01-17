@@ -27,6 +27,9 @@ public class TestConfig implements CommandLineRunner {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private OrderItemRepository orderItemRepository;
+
     @Override
     public void run(String... args) throws Exception {
         Category c1 = new Category(null, "Eletronics");
@@ -49,8 +52,13 @@ public class TestConfig implements CommandLineRunner {
         p1.getCategories().add(c1);
         p2.getCategories().add(c1);
 
+        productRepository.saveAll(Arrays.asList(p1, p2));
         userRepository.saveAll(Arrays.asList(user1, user2));
         orderRepository.saveAll(Arrays.asList(order1, order2));
-        productRepository.saveAll(Arrays.asList(p1, p2));
+
+        OrderItem oi1 = new OrderItem(order1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(order2, p2, 2, p2.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2));
     }
 }
