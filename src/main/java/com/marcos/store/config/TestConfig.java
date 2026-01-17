@@ -1,14 +1,8 @@
 package com.marcos.store.config;
 
-import com.marcos.store.models.Category;
-import com.marcos.store.models.Order;
-import com.marcos.store.models.Product;
-import com.marcos.store.models.User;
+import com.marcos.store.models.*;
 import com.marcos.store.models.enums.OrderStatus;
-import com.marcos.store.repositories.CategoryRepository;
-import com.marcos.store.repositories.OrderRepository;
-import com.marcos.store.repositories.ProductRepository;
-import com.marcos.store.repositories.UserRepository;
+import com.marcos.store.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
