@@ -1,6 +1,7 @@
 package com.marcos.store.models;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.marcos.store.models.enums.OrderStatus;
 import jakarta.persistence.*;
 
@@ -87,6 +88,16 @@ public class Order implements Serializable {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Double getTotal() {
+        Double total = 0.0;
+
+        for(OrderItem item : items) {
+            total += item.getSubTotal();
+        }
+
+        return total;
     }
 
     @Override
